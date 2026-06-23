@@ -1,63 +1,162 @@
-# 🎸 RehearsalRoom — Full-Stack App
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
+![React](https://img.shields.io/badge/React-Frontend-blue)
+![SQLite](https://img.shields.io/badge/SQLite-Database-lightgrey)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-Platform manajemen latihan band. **Hanya butuh Python** — tidak perlu Node.js
-maupun PostgreSQL. Frontend React sudah di-build dan disajikan langsung oleh backend.
+# 🎸 RehearsalRoom
 
-## ⚡ Cara Menjalankan (1 langkah)
+![Dashboard Preview](dashboard.png)
 
-**Windows:** dobel-klik **`start.bat`**
-**Mac/Linux:** `chmod +x start.sh && ./start.sh`
+Aplikasi web full-stack untuk mengelola latihan band, mulai dari manajemen repertoar lagu, jadwal latihan, progres sesi, hingga kolaborasi antar anggota band.
 
-Script otomatis: bikin virtualenv → install dependencies (sekali saja) →
-buat database SQLite → isi data dummy → nyalakan server.
+Frontend React telah di-build dan disajikan langsung oleh backend FastAPI sehingga aplikasi dapat dijalankan dengan konfigurasi yang sederhana.
 
-Lalu buka browser ke **http://localhost:8000** — selesai. Satu alamat saja.
+## ✨ Fitur Utama
 
-> Syarat: cukup **Python 3.10+** terpasang. Database (file `rehearsalroom.db`)
-> dan tabel dibuat otomatis saat pertama jalan. Tidak ada install PostgreSQL/Node.
+* 🔐 Login dan registrasi pengguna
+* 🎵 Manajemen repertoar lagu (CRUD)
+* 📅 Penjadwalan sesi latihan
+* 📈 Tracking progres latihan
+* 💬 Feedback dan catatan sesi
+* 👥 Manajemen anggota band
+* 📊 Dashboard statistik latihan
 
-## 🔑 Login Demo (data sudah terisi)
-| Akun | Email | Password | Role |
-|------|-------|----------|------|
-| Ivan | `ivan@thecatalyst.id` | `password123` | Band Leader |
-| Geby, Fauzi, Iman, Eval, Fudhol, Aril | `geby@thecatalyst.id` dst | `password123` | Member |
+---
 
-Login sebagai **Ivan** untuk fitur leader (tambah lagu, undang member, buat sesi).
-Login sebagai member lain untuk lihat tampilan read-only — bagus untuk tunjukkan role-based access.
+## 🛠️ Tech Stack
 
-## Halaman
-- **/** Login & Register
-- **Dashboard** — statistik band
-- **Songs** — repertoar lagu (CRUD)
-- **Schedule** — kalender + sesi latihan
-- **Session Detail** — lagu, progress slider, feedback
-- **Members** — anggota + undangan
+### Backend
 
-## Struktur & Pembagian Kerja Kelompok
+* FastAPI
+* SQLAlchemy
+* JWT Authentication
+* SQLite (default)
+* PostgreSQL (opsional)
+
+### Frontend
+
+* React
+* TypeScript
+* Vite
+
+---
+
+## 🚀 Menjalankan Aplikasi
+
+### Prasyarat
+
+Pastikan telah terpasang:
+
+* Python 3.10 atau lebih baru
+
+### Menjalankan
+
+**Windows**
+
+```bash
+start.bat
 ```
-rehearsalroom-fullstack/
-├── start.bat / start.sh         ← jalankan ini
-├── rehearsalroom-backend/       ← FastAPI + SQLite + JWT
-│   ├── app/models/  schemas/  routers/  services/  utils/
-│   ├── app/bootstrap.py         ← auto-create tabel + data dummy
-│   └── app/static/              ← frontend React hasil build (disajikan FastAPI)
-└── rehearsalroom-frontend/      ← SOURCE React (untuk dipelajari/diedit)
+
+**Linux / macOS**
+
+```bash
+chmod +x start.sh
+./start.sh
 ```
 
-| Anggota | Bagian yang bisa dijelaskan |
-|---------|------------------------------|
-| 1 | Backend auth + models + database (FastAPI, JWT, SQLAlchemy) |
-| 2 | Backend bands / members / invitations + services |
-| 3 | Backend songs / sessions / progress / feedback / dashboard |
-| 4 | Frontend auth + dashboard + design system |
-| 5 | Frontend songs + schedule + session detail + members |
+Script akan secara otomatis:
 
-## Dokumentasi API
-Swagger UI otomatis aktif di **http://localhost:8000/docs**
+1. Membuat virtual environment
+2. Menginstall dependency
+3. Membuat database
+4. Mengisi data dummy
+5. Menjalankan server
 
-## Catatan
-- Ingin pakai PostgreSQL? Isi `DATABASE_URL` PostgreSQL di file `.env` backend
-  (lihat `.env.example`). Default tanpa `.env` = SQLite.
-- Mau reset data? Hapus file `rehearsalroom-backend/rehearsalroom.db`, jalankan lagi.
-- Mau ubah tampilan frontend? Edit di `rehearsalroom-frontend/` (butuh Node),
-  lalu `npm run build` dan salin isi `dist/` ke `rehearsalroom-backend/app/static/`.
+Setelah berhasil dijalankan, buka:
+
+```text
+http://localhost:8000
+```
+
+---
+
+## 📖 API Documentation
+
+Dokumentasi API tersedia melalui Swagger UI:
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+## 🔑 Akun Demo
+
+| Email                                             | Password    | Role        |
+| ------------------------------------------------- | ----------- | ----------- |
+| [ivan@thecatalyst.id](mailto:ivan@thecatalyst.id) | password123 | Band Leader |
+| [geby@thecatalyst.id](mailto:geby@thecatalyst.id) | password123 | Member      |
+
+Data dummy lainnya akan dibuat secara otomatis saat inisialisasi database.
+
+---
+
+## 📂 Struktur Proyek
+
+```text
+rehearsalroom/
+├── start.bat
+├── start.sh
+├── rehearsalroom-backend/
+│   ├── app/
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   ├── routers/
+│   │   ├── services/
+│   │   ├── utils/
+│   │   ├── bootstrap.py
+│   │   └── static/
+│   └── rehearsalroom.db
+└── rehearsalroom-frontend/
+```
+
+---
+
+## 🗄️ Database
+
+Secara default aplikasi menggunakan SQLite dan database akan dibuat otomatis saat pertama kali dijalankan.
+
+Apabila ingin menggunakan PostgreSQL, atur variabel lingkungan berikut:
+
+```env
+DATABASE_URL=postgresql://username:password@localhost/rehearsalroom
+```
+
+---
+
+## 💻 Pengembangan Frontend
+
+Source code frontend berada pada direktori:
+
+```text
+rehearsalroom-frontend/
+```
+
+Untuk melakukan perubahan pada frontend:
+
+```bash
+npm install
+npm run build
+```
+
+Hasil build kemudian ditempatkan pada:
+
+```text
+rehearsalroom-backend/app/static/
+```
+
+---
+
+## 📄 Lisensi
+
+Proyek ini dikembangkan untuk tujuan pembelajaran dan pengembangan perangkat lunak.
