@@ -159,4 +159,4 @@ rehearsalroom-backend/app/static/
 
 ## 📄 Lisensi
 
-Proyek ini dikembangkan untuk tujuan pembelajaran dan pengembangan perangkat lunak.
+Proyek ini dikembangkan untuk tujuan pembelajaran Mata Kuliah Pemrograman Web Lanjutan B, tahun ajaran 2025/2026.
