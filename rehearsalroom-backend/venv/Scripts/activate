@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\Kampus\Semester 12 Skripsi\Web Lanjutan\rehearsalroom-fullstack\rehearsalroom-fullstack\rehearsalroom-backend\venv"
+VIRTUAL_ENV="D:\Kampus\Semester 12 Skripsi\Web Lanjutan\rehearsalroom-fullstack\rehearsalroom-fullstack\rehearsalroom\rehearsalroom-backend\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -46,9 +46,6 @@ def get_band_membership(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> BandMember:
-    """
-    Verify the current user is a member of the band and return their membership.
-    """
     membership = (
         db.query(BandMember)
         .filter(
@@ -68,9 +65,6 @@ def get_band_membership(
 def require_band_leader(
     membership: BandMember = Depends(get_band_membership),
 ) -> BandMember:
-    """
-    Require the current user to be a band_leader for the band.
-    """
     if membership.role != MemberRole.band_leader:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,

@@ -1,8 +1,4 @@
 @echo off
-REM ============================================================
-REM  RehearsalRoom - cukup Python, tidak perlu Node/PostgreSQL
-REM  Dobel-klik file ini.
-REM ============================================================
 setlocal
 cd /d "%~dp0rehearsalroom-backend"
 

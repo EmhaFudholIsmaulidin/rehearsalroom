@@ -5,10 +5,6 @@ from app.config import settings
 
 
 def send_invitation_email(invited_email: str, band_name: str, inviter_name: str, token: str) -> bool:
-    """
-    Send invitation email. Returns True on success, False on failure.
-    This is a stub — configure SMTP credentials in .env to enable real email sending.
-    """
     accept_url = f"{settings.FRONTEND_URL}/invitations/accept?token={token}"
 
     subject = f"You're invited to join {band_name} on RehearsalRoom!"
@@ -36,7 +32,6 @@ def send_invitation_email(invited_email: str, band_name: str, inviter_name: str,
     </html>
     """
 
-    # If SMTP not configured, just log and return True (dev mode)
     if not settings.SMTP_USER or not settings.SMTP_PASSWORD:
         print(f"[EMAIL STUB] Invitation to {invited_email}: {accept_url}")
         return True

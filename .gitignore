@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+venv/
+*.db
+.env
+node_modules/
+rehearsalroom-frontend/dist/
+.DS_Store
+.vscode/
+.idea/

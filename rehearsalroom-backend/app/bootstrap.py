@@ -1,8 +1,3 @@
-"""
-Inisialisasi database: membuat tabel otomatis + mengisi data dummy.
-Dipanggil saat server startup, jadi tidak perlu Alembic untuk SQLite.
-(Alembic tetap tersedia bila ingin pakai PostgreSQL.)
-"""
 from datetime import datetime, timedelta, timezone
 
 from app.database import Base, engine, SessionLocal
@@ -41,12 +36,10 @@ SONGS = [
 
 
 def init_db():
-    """Buat semua tabel jika belum ada."""
     Base.metadata.create_all(bind=engine)
 
 
 def seed_if_empty(force: bool = False):
-    """Isi data dummy jika band The Catalyst belum ada."""
     init_db()
     db = SessionLocal()
     try:

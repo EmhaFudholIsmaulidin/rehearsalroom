@@ -23,12 +23,6 @@ Base = declarative_base()
 
 
 class GUID(TypeDecorator):
-    """Platform-independent UUID type.
-
-    Uses PostgreSQL's native UUID when available, otherwise stores as
-    CHAR(36) string (e.g. on SQLite). Always returns uuid.UUID on read.
-    """
-
     impl = CHAR
     cache_ok = True
 

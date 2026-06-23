@@ -61,9 +61,6 @@ app.include_router(dashboard.router, prefix=API_PREFIX)
 def health_check():
     return {"status": "ok"}
 
-
-# Sajikan frontend React hasil build (folder app/static) sehingga seluruh
-# aplikasi jalan di http://localhost:8000 tanpa perlu Node.js.
 STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
 
 if os.path.isdir(STATIC_DIR):
